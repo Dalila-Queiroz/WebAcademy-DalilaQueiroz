@@ -1,24 +1,11 @@
-name: Quinto Workflow
+name: Quarto Workflow
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do repositório
-        uses: actions/checkout@v5
-
-      - name: Exibir data
-        run: date
-
-      - name: Exibir versão do Git
-        run: git --version
-
-  job2:
-    needs: job1
+  validar-arquivos:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório
@@ -35,5 +22,3 @@ jobs:
 
       - name: Mensagem final
         run: echo "Todos os arquivos obrigatórios existem."
-
-
