@@ -1,22 +1,39 @@
-name: Quarto Workflow
+name: Quinto Workflow
 
 on:
   push:
   workflow_dispatch:
 
 jobs:
-  validar-repositorio:
+  job1:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v5
 
-      - name: Verificar arquivos obrigatórios
-        run: |
-          test -f README.md
-          test -f LICENSE
-          test -f .gitignore
+      - name: Exibir data
+        run: date
 
-          echo "Todos os arquivos obrigatórios existem."
+      - name: Exibir versão do Git
+        run: git --version
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v5
+
+      - name: Verificar README
+        run: test -f README.md
+
+      - name: Verificar LICENSE
+        run: test -f LICENSE
+
+      - name: Verificar .gitignore
+        run: test -f .gitignore
+
+      - name: Mensagem final
+        run: echo "Todos os arquivos obrigatórios existem."
 
 
