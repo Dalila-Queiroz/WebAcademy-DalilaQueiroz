@@ -18,14 +18,7 @@ jobs:
       - name: Lista de arquivos
         run: ls ${{ github.workspace }}
 
-      - name: Exibir informações do workflow
-        run: |
-          echo "Nome do curso: $CURSO"
-          echo "Usuário que executou o workflow: ${{ github.actor }}"
-          echo "Nome do repositório: ${{ github.repository }}"
-          echo "Branch utilizada: ${{ github.ref_name }}"
-          echo "Status do job: ${{ job.status }}."
-
+      
       - name: Exibir data e hora da execução
         run: date
 
